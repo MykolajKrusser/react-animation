@@ -29,7 +29,7 @@ class App extends Component {
         </button>
         <br/>
 
-        <Transition in={this.state.showBlock} timeout={300} mountOnEnter unmountOnExit>
+        <Transition in={this.state.showBlock} timeout={1000} mountOnEnter unmountOnExit>
           {state => (
             <div style={{
               backgroundColor: 'red', 
@@ -40,10 +40,15 @@ class App extends Component {
               opacity: state === 'exiting' ? 0 : 1
             }}></div>
           )}
-          
+        </Transition>
+
+         <Transition in={this.state.modalIsOpen} timeout={1000} mountOnEnter unmountOnExit>
+          {state => (
+            <Modal show={state} closed={this.closedModal}/>
+          )}
         </Transition>
       
-        <Modal show={this.state.modalIsOpen} closed={this.closedModal}/>
+        
         <Backdrop show={this.state.modalIsOpen} closed={this.closedModal}/>
         <button className="Button" onClick={this.showModal}>Open Modal</button>
         <h3>Animating Lists</h3>
