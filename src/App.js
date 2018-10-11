@@ -29,17 +29,27 @@ class App extends Component {
         </button>
         <br/>
 
-        <Transition in={this.state.showBlock} timeout={1000} mountOnEnter unmountOnExit>
-          {state => (
-            <div style={{
-              backgroundColor: 'red', 
-              width: '100px', 
-              height: '100px', 
-              margin: 'auto',
-              transition: 'opacity 1s ease',
-              opacity: state === 'exiting' ? 0 : 1
-            }}></div>
-          )}
+        <Transition 
+          in={this.state.showBlock} 
+          timeout={1000} 
+          mountOnEnter 
+          unmountOnExit
+          onEnter={()=>console.log('onEneter')}
+          onEntering={()=>console.log('onEnetering')}
+          onEntered={()=>console.log('onEnetered')}
+          onExit={()=>console.log('OnExit')}
+          onExiting={()=>console.log('OnExiting')}
+          onExited={()=>console.log('OnExited')}>
+            {state => (
+              <div style={{
+                backgroundColor: 'red', 
+                width: '100px', 
+                height: '100px', 
+                margin: 'auto',
+                transition: 'opacity 1s ease',
+                opacity: state === 'exiting' ? 0 : 1
+              }}></div>
+            )}
         </Transition>
         <Modal show={this.state.modalIsOpen} closed={this.closedModal}/>
         
